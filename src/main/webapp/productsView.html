@@ -1,0 +1,25 @@
+<div ng-cloak>
+    <h2>Currently available in our shop:</h2>
+    <ul ng-repeat="productDto in shopController.products">
+        <li>{{productDto.product.name}} {{productDto.availableQuantity}} left </li>
+    </ul>
+    <h2>Your shopping</h2>
+    <ul ng-repeat="productDto in shopController.products">
+        <li>{{productDto.product.name}}
+            <input ng-init="productDto.product.quantity = 0" ng-model="productDto.product.quantity"  />
+        </li>
+    </ul>
+    <div style="color: red">{{shopController.message}}</div>
+    <input type="button" ng-click="shopController.buy()" value="Buy" />
+
+    <h2>Orders:</h2>
+    <ul ng-repeat="order in shopController.orders">
+        <li>
+            order id: {{order.id}} items:
+            <div ng-repeat="item in order.items">
+                product name: {{item.product.name}} quantity: {{item.quantity}}
+            </div>
+        </li>
+    </ul>
+</div>
+
